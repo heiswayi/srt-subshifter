@@ -1,0 +1,60 @@
+﻿<Window x:Class="srt_subshifter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:srt_subshifter"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        SnapsToDevicePixels="True"
+        Icon="icon.ico"
+        Title="MainWindow" Height="300" Width="420">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" Width="380" Height="Auto" HorizontalAlignment="Center" Margin="0,5">
+                Before you can use this tool, you may need to verify your subtitles file with any video player software so you will know either your subtitles are late or ahead of the movie.
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+            <Label Content="Load SRT file: " Width="100" />
+            <TextBox IsReadOnly="True" Width="200" Name="SubFile" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Background="#fff0f0f0" />
+            <Button Content="Browse..." Margin="10,0,0,0" Padding="10,0" Name="BrowseSubFile" Click="BrowseSubFile_Click" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
+            <Label Content="Time shift: " Width="100" />
+            <TextBox Width="100" Text="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="TimeShift" ToolTip="Use negative sign for negative time shift." />
+            <Label Content=" in second" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Label Width="100" />
+            <TextBlock TextWrapping="Wrap" Width="280" Height="Auto">
+                If the subtitles are <Bold>late</Bold>, use a <Span Foreground="Red">negative time shift</Span>.<LineBreak />
+                If the subtitles are <Bold>ahead of the movie</Bold>, use a <Span Foreground="Green">positive time shift</Span>.
+            </TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="4" Background="#fff0f0f0" Margin="0,10,0,0">
+            <StackPanel Margin="0,10">
+                <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center">
+                    <Label Width="100" />
+                    <CheckBox Content="Overwrite" Name="Overwrite" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="24" Checked="IsOverwrite" Unchecked="IsOverwrite" ToolTip="If checked, existing subtitles file will be overwritten." />
+                    <Button Content="Resync" Margin="10,0,0,0" Padding="10,0" Name="BtnResync" Click="BtnResync_Click" />
+                    <Label Margin="10,0,0,0" Name="LblStatus" VerticalContentAlignment="Center" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Label Width="100" />
+                    <TextBlock TextWrapping="Wrap" Width="280" Height="Auto">
+                Synced subtitle file will be generated automatically.
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
